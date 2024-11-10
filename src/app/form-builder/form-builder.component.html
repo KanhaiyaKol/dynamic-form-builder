@@ -1,0 +1,35 @@
+<div>
+    <h3>Dynamic Form Builder</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose Field Type</mat-label>
+      <mat-select #fieldType (selectionChange)="addField(fieldType.value)">
+        <mat-option *ngFor="let type of fieldTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <div *ngFor="let field of formFields; let i = index">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Label" [(ngModel)]="field.label" />
+      </mat-form-field>
+  
+      <!-- Only show placeholder input for Text and Textarea fields -->
+      <mat-form-field *ngIf="field.type === 'Text' || field.type === 'Textarea'" appearance="outline">
+        <input matInput placeholder="Placeholder" [(ngModel)]="field.placeholder" />
+      </mat-form-field>
+  
+      <mat-checkbox [(ngModel)]="field.required">Required</mat-checkbox>
+  
+      <!-- Options for Dropdown and Radio Buttons -->
+      <div *ngIf="field.type === 'Dropdown' || field.type === 'Radio'">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Option 1" [(ngModel)]="field.options[0]" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Option 2" [(ngModel)]="field.options[1]" />
+        </mat-form-field>
+      </div>
+  
+      <button mat-button color="warn" (click)="removeField(i)">Remove</button>
+    </div>
+  </div>
+  

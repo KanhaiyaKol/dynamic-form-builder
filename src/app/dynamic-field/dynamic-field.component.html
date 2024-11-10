@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let field of fields">
+      <div *ngIf="field.type === 'Text' || field.type === 'Textarea'">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput *ngIf="field.type === 'Text'" [formControlName]="field.label" [placeholder]="field.placeholder" />
+          <textarea matInput *ngIf="field.type === 'Textarea'" [formControlName]="field.label" [placeholder]="field.placeholder"></textarea>
+          <mat-error *ngIf="form.get(field.label)?.hasError('required') && submitted">
+            {{ field.label }} is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div *ngIf="field.type === 'Dropdown'">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <mat-select [formControlName]="field.label">
+            <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get(field.label)?.hasError('required') && submitted">
+            {{ field.label }} is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div *ngIf="field.type === 'Checkbox'">
+        <mat-checkbox [formControlName]="field.label">{{ field.label }}</mat-checkbox>
+      </div>
+  
+      <div *ngIf="field.type === 'Radio'">
+        <label>{{ field.label }}</label>
+        <mat-radio-group [formControlName]="field.label">
+          <mat-radio-button *ngFor="let option of field.options" [value]="option">
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="form.get(field.label)?.hasError('required') && submitted">
+          {{ field.label }} is required
+        </mat-error>
+      </div>
+    </ng-container>
+  
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+  

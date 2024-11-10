@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dynamic-form-builder';
+  formFields: any[] = []; // Define formFields as an empty array
 }

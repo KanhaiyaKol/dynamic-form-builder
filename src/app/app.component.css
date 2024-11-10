@@ -1,0 +1,78 @@
+/* Center the form container */
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  /* Form styling */
+  .form-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h3 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #3f51b5;
+    margin-bottom: 20px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-checkbox,
+  mat-radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #3f51b5;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #303f9f;
+  }
+  
+  /* Style for submit button inside form builder */
+  .submit-form-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #3f51b5;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  .submit-form-button:hover {
+    background-color: #303f9f;
+  }
+  
